@@ -1,0 +1,20 @@
+## Global .gitignore
+
+**/target/**
+*.project
+*.classpath
+**/webapp.war/cache/**
+app/src/main/webapp.war/cache/**
+app/src/main/webapp.war/WEB-INF/classes/**
+*.undeployed
+*.rdb
+*.class
+*.jar
+webapp.war/*.class
+
+
+## OS junk:
+.DS_Store
+.DS_Store?
+._*
+.Trashes
