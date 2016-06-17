@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="quickBooking:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="quickBooking.war">
+      <element id="artifact" artifact-name="quickBooking:war exploded" />
+    </root>
+  </artifact>
+</component>
