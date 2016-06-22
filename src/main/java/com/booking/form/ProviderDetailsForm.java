@@ -8,6 +8,7 @@ public class ProviderDetailsForm {
 	String middleName;
 	String lastName;
 	String password;
+	String email;
 	String primaryPhone;
 	String alternatePhone;
 
@@ -57,5 +58,13 @@ public class ProviderDetailsForm {
 
 	public void setAlternatePhone(String alternatePhone) {
 		this.alternatePhone = alternatePhone;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

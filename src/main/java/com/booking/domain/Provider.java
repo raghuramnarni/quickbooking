@@ -2,6 +2,8 @@ package com.booking.domain;
 
 import java.util.HashSet;
 
+import com.booking.form.ProviderDetailsForm;
+
 /**
  * Created by raghuramn on 6/16/16.
  */
@@ -19,6 +21,15 @@ public class Provider {
 
 
 	public Provider() {
+	}
+	
+	public Provider(ProviderDetailsForm form) {
+		this.firstName = form.getFirstName();
+		this.lastName = form.getLastName();
+		this.email = form.getEmail();
+		this.password = form.getPassword();
+		this.primaryPhone = form.getPrimaryPhone();
+		this.alternatePhone = form.getAlternatePhone();
 	}
 
 	public long getId() {

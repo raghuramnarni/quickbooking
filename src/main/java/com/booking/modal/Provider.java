@@ -11,6 +11,19 @@ public class Provider {
 	String primaryPhone;
 	String alternatePhone;
 
+	public Provider(){
+		
+	}
+	
+	public Provider(com.booking.domain.Provider provider){
+		this.firstName = provider.getFirstName();
+		this.middleName = provider.getMiddleName();
+		this.lastName = provider.getLastName();
+		this.password = provider.getPassword();
+		this.primaryPhone = provider.getPrimaryPhone();
+		this.alternatePhone = provider.getAlternatePhone();
+	}
+	
 	public String getFirstName() {
 		return firstName;
 	}

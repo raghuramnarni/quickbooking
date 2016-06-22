@@ -13,6 +13,7 @@ public class ProviderServiceImpl implements ProviderService {
 
 	@Override
 	public Provider createProvider(ProviderDetailsForm form){
-		return new Provider();
+		Provider provider = new Provider(form);
+		return provider;
 	}
 }

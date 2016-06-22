@@ -1,11 +1,11 @@
 package com.booking.controller;
 
-import com.booking.form.ProviderDetailsForm;
-import com.booking.modal.Provider;
-import com.booking.response.APIResponse;
-import com.booking.response.Success;
-import com.booking.service.ProviderService;
-import com.booking.service.impl.ProviderServiceImpl;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.Map;
+import com.booking.form.ProviderDetailsForm;
+import com.booking.modal.Provider;
+import com.booking.response.APIResponse;
+import com.booking.response.Success;
+import com.booking.service.ProviderService;
 
 /**
  * Created by raghuramn on 6/17/16.
@@ -42,9 +43,8 @@ public class ProviderController {
 
 		Map<String, Object> data = new HashMap<String, Object>();
 		com.booking.domain.Provider provider = providerService.createProvider(form);
-		Provider test = new Provider();
-		test.setFirstName(form.getFirstName());
-		data.put("provider", test);
+		Provider modelProvider = new Provider(provider);
+		data.put("provider", modelProvider);
 		return new Success(data);
 	}
 
