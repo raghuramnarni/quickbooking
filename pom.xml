@@ -11,6 +11,7 @@
         <spring.version>4.1.1.RELEASE</spring.version>
         <hibernate.version>4.2.2.Final</hibernate.version>
         <jackson.version>1.9.10</jackson.version>
+        <springsecurity.version>4.0.1.RELEASE</springsecurity.version>
     </properties>
 
     <dependencies>
@@ -51,6 +52,19 @@
             <version>${spring.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <!-- Spring Security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+
         <!-- Hibernate -->
         <dependency>
             <groupId>org.hibernate</groupId>
@@ -75,6 +89,12 @@
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
             <version>2.4.1.1</version>
+        </dependency>
+         <!-- jstl -->
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
         </dependency>
 
         <dependency>
