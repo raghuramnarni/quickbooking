@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.booking.modal.Provider" table="USER">
+    <class name="com.booking.domain.Provider" table="USER">
         <id name="id" type="long" column="ID">
             <generator class="identity" />
         </id>

@@ -1,15 +1,33 @@
-package com.booking.modal;
+package com.booking.domain;
+
+import java.util.HashSet;
 
 /**
- * Created by raghuramn on 6/18/16.
+ * Created by raghuramn on 6/16/16.
  */
 public class Provider {
+
+	long id;
 	String firstName;
 	String middleName;
 	String lastName;
+	String email;
 	String password;
 	String primaryPhone;
 	String alternatePhone;
+	HashSet<Property> properties;
+
+
+	public Provider() {
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public String getFirstName() {
 		return firstName;
@@ -35,6 +53,14 @@ public class Provider {
 		this.lastName = lastName;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public String getPassword() {
 		return password;
 	}
@@ -57,5 +83,13 @@ public class Provider {
 
 	public void setAlternatePhone(String alternatePhone) {
 		this.alternatePhone = alternatePhone;
+	}
+
+	public HashSet<Property> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(HashSet<Property> properties) {
+		this.properties = properties;
 	}
 }

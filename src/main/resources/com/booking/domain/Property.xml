@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.booking.modal.Property" table="USER">
+    <class name="com.booking.domain.Property" table="USER">
         <id name="id" type="long" column="ID">
             <generator class="identity" />
         </id>
@@ -13,7 +13,7 @@
             <column name="VENUE_NAME" />
         </property>
 
-        <component name="address" class="com.booking.modal.Address">
+        <component name="address" class="com.booking.domain.Address">
             <property name="addressLine1" access="field">
                 <column name="ADDRESS_LINE_1" />
             </property>
@@ -26,8 +26,8 @@
             <property name="state">
                 <column name="STATE" />
             </property>
-            <property name="zip">
-                <column name="ZIP" />
+            <property name="postalCode">
+                <column name="POSTAL_CODE" />
             </property>
         </component>
 

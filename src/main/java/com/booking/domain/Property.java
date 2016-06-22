@@ -1,4 +1,4 @@
-package com.booking.modal;
+package com.booking.domain;
 
 /**
  * Created by raghuramn on 6/17/16.

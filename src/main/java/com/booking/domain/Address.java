@@ -1,4 +1,4 @@
-package com.booking.modal;
+package com.booking.domain;
 
 /**
  * Created by raghuramn on 6/16/16.
@@ -7,7 +7,7 @@ public class Address {
 	String addressLine1;
 	String addressLine2;
 	String landMark;
-	String zip;
+	String postalCode;
 	String city;
 	String state;
 	String country;
@@ -15,11 +15,11 @@ public class Address {
 	public Address() {
 	}
 
-	public Address(String addressLine1, String addressLine2, String landMark, String zip, String city, String state, String country) {
+	public Address(String addressLine1, String addressLine2, String landMark, String postalCode, String city, String state, String country) {
 		this.addressLine1 = addressLine1;
 		this.addressLine2 = addressLine2;
 		this.landMark = landMark;
-		this.zip = zip;
+		this.postalCode = postalCode;
 		this.city = city;
 		this.state = state;
 		this.country = country;
@@ -49,12 +49,12 @@ public class Address {
 		this.landMark = landMark;
 	}
 
-	public String getZip() {
-		return zip;
+	public String getPostalCode() {
+		return postalCode;
 	}
 
-	public void setZip(String zip) {
-		this.zip = zip;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	public String getCity() {
