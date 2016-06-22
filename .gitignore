@@ -1,6 +1,6 @@
 ## Global .gitignore
 
-target/**
+*/target/**
 *.project
 *.classpath
 **/webapp.war/cache/**

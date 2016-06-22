@@ -5,7 +5,7 @@
 
 <hibernate-mapping>
     <class name="com.booking.domain.Property" table="USER">
-        <id name="id" type="long" column="ID">
+        <id name="id" type="long" column="ID_PROPERTY">
             <generator class="identity" />
         </id>
 
