@@ -1,14 +1,24 @@
 package com.booking.domain;
 
+import java.io.Serializable;
 import java.util.HashSet;
 
 import com.booking.form.ProviderDetailsForm;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 /**
  * Created by raghuramn on 6/16/16.
  */
-public class Provider {
+@Entity
+public class Provider implements Serializable{
 
+	@Id
+	@GeneratedValue
+	@Column(name = "ID_PROVIDER")
 	long id;
 	String firstName;
 	String middleName;

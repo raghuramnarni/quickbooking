@@ -4,7 +4,7 @@
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-    <class name="com.booking.domain.Provider" table="USER">
+    <class name="com.booking.domain.Provider" table="PROVIDER">
         <id name="id" type="long" column="ID_PROVIDER">
             <generator class="identity" />
         </id>
@@ -25,6 +25,7 @@
         <property name="primaryPhone" type="string">
             <column name="PRIMARY_PHONE" />
         </property>
+
         <property name="alternatePhone" type="string">
             <column name="ALTERNATE_PHONE" />
         </property>

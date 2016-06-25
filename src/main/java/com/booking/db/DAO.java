@@ -14,8 +14,9 @@ public class DAO<T> {
 	public Serializable save(T object) {
 		try {
 			Session session = getPrimarySession();
+			session.beginTransaction();
 			Serializable objectId = session.save(object);
-			session.flush();
+			session.getTransaction().commit();
 			return objectId;
 		} catch (ConstraintViolationException ex) {
 			throw ex;
@@ -28,8 +29,9 @@ public class DAO<T> {
 	public void saveOrUpdate(T object) {
 		try {
 			Session session = getPrimarySession();
+			session.beginTransaction();
 			session.saveOrUpdate(object);
-			session.flush();
+			session.getTransaction().commit();
 		} catch (ConstraintViolationException ex) {
 			throw ex;
 		}
