@@ -30,5 +30,13 @@
             <column name="ALTERNATE_PHONE" />
         </property>
 
+        <set name="properties" table="PROPERTY"
+             inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_PROVIDER" not-null="true" />
+            </key>
+            <one-to-many class="com.booking.modal.Property" />
+        </set>
+
     </class>
 </hibernate-mapping>

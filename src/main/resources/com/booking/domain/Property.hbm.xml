@@ -12,24 +12,27 @@
         <property name="venueName" type="string">
             <column name="VENUE_NAME" />
         </property>
+        <property name="addressLine1" type="string">
+            <column name="ADDRESS_LINE_1" />
+        </property>
+        <property name="addressLine2" type="string">
+            <column name="ADDRESS_LINE_2" />
+        </property>
+        <property name="city" type="string">
+            <column name="CITY" />
+        </property>
+        <property name="state" type="string">
+            <column name="STATE" />
+        </property>
+        <property name="postalCode" type="string">
+            <column name="POSTAL_CODE" />
+        </property>
+        <property name="landMark" type="string">
+            <column name="LAND_MARK" />
+        </property>
 
-        <component name="address" class="com.booking.domain.Address">
-            <property name="addressLine1" access="field">
-                <column name="ADDRESS_LINE_1" />
-            </property>
-            <property name="addressLine2">
-                <column name="ADDRESS_LINE_2" />
-            </property>
-            <property name="city" access="field">
-                <column name="CITY" />
-            </property>
-            <property name="state">
-                <column name="STATE" />
-            </property>
-            <property name="postalCode">
-                <column name="POSTAL_CODE" />
-            </property>
-        </component>
-
+        <many-to-one name="provider" class="com.booking.domain.Provider" fetch="select">
+           <column name="ID_PROVIDER" not-null="true" />
+        </many-to-one>
     </class>
 </hibernate-mapping>

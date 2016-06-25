@@ -2,6 +2,7 @@ package com.booking.domain;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 
 import com.booking.form.ProviderDetailsForm;
 
@@ -34,6 +35,8 @@ public class Provider implements Serializable{
 	String primaryPhone;
 	@Column(name = "ALTERNATE_PHONE")
 	String alternatePhone;
+
+	HashSet<Property> properties;
 
 
 
@@ -111,5 +114,13 @@ public class Provider implements Serializable{
 
 	public void setAlternatePhone(String alternatePhone) {
 		this.alternatePhone = alternatePhone;
+	}
+
+	public HashSet<Property> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(HashSet<Property> properties) {
+		this.properties = properties;
 	}
 }

@@ -18,5 +18,6 @@
         <property name="hibernate.cache.use_query_cache">true</property>
         <!-- mapping files -->
         <mapping class="com.booking.domain.Provider"/>
+        <mapping class="com.booking.domain.Property"/>
     </session-factory>
 </hibernate-configuration>

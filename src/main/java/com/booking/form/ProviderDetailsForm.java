@@ -1,5 +1,9 @@
 package com.booking.form;
 
+import java.util.ArrayList;
+import java.util.List;
+import com.booking.modal.Property;
+
 /**
  * Created by raghuramn on 6/18/16.
  */
@@ -11,6 +15,7 @@ public class ProviderDetailsForm {
 	String email;
 	String primaryPhone;
 	String alternatePhone;
+	List<Property> properties = new ArrayList<Property>();
 
 	public String getFirstName() {
 		return firstName;
@@ -66,5 +71,13 @@ public class ProviderDetailsForm {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public List<Property> getProperties() {
+		return properties;
+	}
+
+	public void setProperties(List<Property> properties) {
+		this.properties = properties;
 	}
 }

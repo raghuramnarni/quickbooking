@@ -1,55 +1,20 @@
-package com.booking.domain;
+package com.booking.modal;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import com.booking.domain.Address;
 
 /**
  * Created by raghuramn on 6/17/16.
  */
-@Entity
-public class Property implements Serializable{
+public class Property {
 
-	@Id
-	@GeneratedValue
-	@Column(name = "ID_PROPERTY")
-	long id;
-	@Column(name = "VENUE_NAME")
 	String venueName;
-	@Column(name = "ADDRESS_LINE_1")
 	String addressLine1;
-	@Column(name = "ADDRESS_LINE_2")
 	String addressLine2;
-	@Column(name = "LAND_MARK")
 	String landMark;
-	@Column(name = "POSTAL_CODE")
 	String postalCode;
-	@Column(name = "CITY")
 	String city;
-	@Column(name = "STATE")
 	String state;
-	@Column(name = "COUNTRY")
 	String country;
-	@Column(name = "ID_PROVIDER")
-	Provider provider;
-
-	public Property(com.booking.modal.Property property) {
-		setVenueName(property.getVenueName());
-		setAddressLine1(property.getAddressLine1());
-		setAddressLine2(property.getAddressLine2());
-		setLandMark(property.getLandMark());
-		setPostalCode(property.getPostalCode());
-		setCity(property.getCity());
-		setState(property.getState());
-		setCountry(property.getCountry());
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
-	}
 
 	public String getVenueName() {
 		return venueName;
@@ -113,13 +78,5 @@ public class Property implements Serializable{
 
 	public void setCountry(String country) {
 		this.country = country;
-	}
-
-	public Provider getProvider() {
-		return provider;
-	}
-
-	public void setProvider(Provider provider) {
-		this.provider = provider;
 	}
 }
