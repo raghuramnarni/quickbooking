@@ -20,14 +20,21 @@ public class Provider implements Serializable{
 	@GeneratedValue
 	@Column(name = "ID_PROVIDER")
 	long id;
+	@Column(name = "FIRST_NAME")
 	String firstName;
+	@Column(name = "MIDDLE_NAME")
 	String middleName;
+	@Column(name = "LAST_NAME")
 	String lastName;
+	@Column(name = "EMAIL")
 	String email;
+	@Column(name = "PASSWORD")
 	String password;
+	@Column(name = "PRIMARY_PHONE")
 	String primaryPhone;
+	@Column(name = "ALTERNATE_PHONE")
 	String alternatePhone;
-	HashSet<Property> properties;
+
 
 
 	public Provider() {
@@ -104,13 +111,5 @@ public class Provider implements Serializable{
 
 	public void setAlternatePhone(String alternatePhone) {
 		this.alternatePhone = alternatePhone;
-	}
-
-	public HashSet<Property> getProperties() {
-		return properties;
-	}
-
-	public void setProperties(HashSet<Property> properties) {
-		this.properties = properties;
 	}
 }
