@@ -30,19 +30,21 @@ public class ProviderController {
 	ProviderService providerService;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET, produces = "application/json")
-	public @ResponseBody APIResponse list(HttpServletRequest request,
-																				HttpServletResponse response) {
+	public @ResponseBody
+	APIResponse list(HttpServletRequest request, HttpServletResponse response) {
 
 		Map<String, Object> data = new HashMap<String, Object>();
 		return new Success(data);
 	}
 
 	@RequestMapping(value = "/enroll", method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody APIResponse enroll(HttpServletRequest request,
-																				HttpServletResponse response, @RequestBody ProviderDetailsForm form) {
+	public @ResponseBody
+	APIResponse enroll(HttpServletRequest request,
+			HttpServletResponse response, @RequestBody ProviderDetailsForm form) {
 
 		Map<String, Object> data = new HashMap<String, Object>();
-		com.booking.domain.Provider provider = providerService.createProvider(form);
+		com.booking.domain.Provider provider = providerService
+				.createProvider(form);
 		Provider modelProvider = new Provider(provider);
 		data.put("provider", modelProvider);
 		return new Success(data);
