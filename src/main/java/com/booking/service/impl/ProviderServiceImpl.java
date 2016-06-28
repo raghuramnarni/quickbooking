@@ -25,6 +25,7 @@ public class ProviderServiceImpl implements ProviderService {
 		Provider provider = new Provider(form);
 		ProviderDAO<Provider> providerDAO = new ProviderDAO<Provider>();
 		HashSet<com.booking.domain.Property> properties = new HashSet<com.booking.domain.Property>();
+		providerDAO.save(provider);
 		for(Property property : form.getProperties()){
 			com.booking.domain.Property domainProperty = new com.booking.domain.Property(property);
 			PropertyDAO<com.booking.domain.Property> propertyDAO = new PropertyDAO<com.booking.domain.Property>();
@@ -33,7 +34,7 @@ public class ProviderServiceImpl implements ProviderService {
 			properties.add(domainProperty);
 		}
 		provider.setProperties(properties);
-		providerDAO.save(provider);
+		providerDAO.saveOrUpdate(provider);
 		return provider;
 	}
 }

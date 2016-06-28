@@ -29,7 +29,8 @@ public class Property implements Serializable{
 	String state;
 	@Column(name = "COUNTRY")
 	String country;
-	@Column(name = "ID_PROVIDER")
+	@ManyToOne
+	@JoinColumn(name="ID_PROVIDER")
 	Provider provider;
 
 	public Property(com.booking.modal.Property property) {

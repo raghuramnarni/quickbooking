@@ -3,13 +3,11 @@ package com.booking.domain;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.booking.form.ProviderDetailsForm;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by raghuramn on 6/16/16.
@@ -19,7 +17,7 @@ public class Provider implements Serializable{
 
 	@Id
 	@GeneratedValue
-	@Column(name = "ID_PROVIDER")
+	@Column(name = "ID")
 	long id;
 	@Column(name = "FIRST_NAME")
 	String firstName;
@@ -36,7 +34,8 @@ public class Provider implements Serializable{
 	@Column(name = "ALTERNATE_PHONE")
 	String alternatePhone;
 
-	HashSet<Property> properties;
+	@OneToMany
+	Set<Property> properties = new HashSet<Property>();
 
 
 
@@ -116,7 +115,7 @@ public class Provider implements Serializable{
 		this.alternatePhone = alternatePhone;
 	}
 
-	public HashSet<Property> getProperties() {
+	public Set<Property> getProperties() {
 		return properties;
 	}
 
