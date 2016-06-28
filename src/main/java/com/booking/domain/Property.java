@@ -7,6 +7,7 @@ import java.io.Serializable;
  * Created by raghuramn on 6/17/16.
  */
 @Entity
+@Table(name="PROPERTY")
 public class Property implements Serializable{
 
 	@Id
@@ -29,7 +30,8 @@ public class Property implements Serializable{
 	String state;
 	@Column(name = "COUNTRY")
 	String country;
-	@ManyToOne
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="ID_PROVIDER")
 	Provider provider;
 

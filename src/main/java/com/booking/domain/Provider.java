@@ -13,6 +13,7 @@ import javax.persistence.*;
  * Created by raghuramn on 6/16/16.
  */
 @Entity
+@Table(name="PROVIDER")
 public class Provider implements Serializable{
 
 	@Id
@@ -34,7 +35,7 @@ public class Provider implements Serializable{
 	@Column(name = "ALTERNATE_PHONE")
 	String alternatePhone;
 
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL, mappedBy = "provider")
 	Set<Property> properties = new HashSet<Property>();
 
 
