@@ -11,6 +11,8 @@ app/src/main/webapp.war/WEB-INF/classes/**
 *.class
 *.jar
 webapp.war/*.class
+*.idea/*
+.idea/workspace.xml
 
 
 ## OS junk:
