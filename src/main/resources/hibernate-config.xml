@@ -19,5 +19,8 @@
         <!-- mapping files -->
         <mapping class="com.booking.domain.Provider"/>
         <mapping class="com.booking.domain.Property"/>
+        <mapping class="com.booking.domain.ProviderImageFile"/>
+        <mapping class="com.booking.domain.PropertyDocumentFile"/>
+        <mapping class="com.booking.domain.PropertyImageFile"/>
     </session-factory>
 </hibernate-configuration>

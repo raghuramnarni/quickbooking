@@ -3,7 +3,7 @@ package com.booking.modal;
 /**
  * Created by raghuramn on 6/18/16.
  */
-public class Provider {
+public class ProviderResponse {
 	String firstName;
 	String middleName;
 	String lastName;
@@ -11,11 +11,11 @@ public class Provider {
 	String primaryPhone;
 	String alternatePhone;
 
-	public Provider(){
+	public ProviderResponse(){
 		
 	}
 	
-	public Provider(com.booking.domain.Provider provider){
+	public ProviderResponse(com.booking.domain.Provider provider){
 		this.firstName = provider.getFirstName();
 		this.middleName = provider.getMiddleName();
 		this.lastName = provider.getLastName();

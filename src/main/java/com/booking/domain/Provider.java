@@ -1,11 +1,12 @@
 package com.booking.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import com.booking.form.ProviderDetailsForm;
+import com.booking.form.ProviderEnrollmentForm;
 
 import javax.persistence.*;
 
@@ -19,7 +20,7 @@ public class Provider implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name = "ID")
-	long id;
+	Long id;
 	@Column(name = "FIRST_NAME")
 	String firstName;
 	@Column(name = "MIDDLE_NAME")
@@ -38,12 +39,15 @@ public class Provider implements Serializable{
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "provider")
 	Set<Property> properties = new HashSet<Property>();
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "provider")
+	List<ProviderImageFile> photos = new ArrayList<ProviderImageFile>();
+
 
 
 	public Provider() {
 	}
 	
-	public Provider(ProviderDetailsForm form) {
+	public Provider(ProviderEnrollmentForm form) {
 		this.firstName = form.getFirstName();
 		this.lastName = form.getLastName();
 		this.email = form.getEmail();
@@ -52,11 +56,11 @@ public class Provider implements Serializable{
 		this.alternatePhone = form.getAlternatePhone();
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -122,5 +126,13 @@ public class Provider implements Serializable{
 
 	public void setProperties(HashSet<Property> properties) {
 		this.properties = properties;
+	}
+
+	public List<ProviderImageFile> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<ProviderImageFile> photos) {
+		this.photos = photos;
 	}
 }

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="com.booking.domain.PropertyDocumentFile" table="PROPERTY_DOCUMENT">
+        <id name="id" type="long" column="ID">
+            <generator class="identity" />
+        </id>
+
+        <property name="name" type="string">
+            <column name="NAME" />
+        </property>
+        <property name="path" type="string">
+            <column name="PATH" />
+        </property>
+
+        <many-to-one name="property" class="com.booking.domain.Property" fetch="select" cascade="all">
+           <column name="PROVIDER_ID" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

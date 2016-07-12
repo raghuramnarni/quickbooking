@@ -34,5 +34,14 @@
         <many-to-one name="provider" class="com.booking.domain.Provider" fetch="select">
            <column name="ID_PROVIDER" not-null="true" />
         </many-to-one>
+
+        <bag name="photos" table="PROVIDER_PHOTO"
+             order-by="ID" cascade="all" lazy="true">
+            <key>
+                <column name="PROVIDER_ID" not-null="true" />
+            </key>
+            <one-to-many
+                    class="com.booking.domain.ProviderImageFile" />
+        </bag>
     </class>
 </hibernate-mapping>

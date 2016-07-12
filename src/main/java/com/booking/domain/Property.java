@@ -2,6 +2,8 @@ package com.booking.domain;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by raghuramn on 6/17/16.
@@ -13,7 +15,7 @@ public class Property implements Serializable{
 	@Id
 	@GeneratedValue
 	@Column(name = "ID_PROPERTY")
-	long id;
+	Long id;
 	@Column(name = "VENUE_NAME")
 	String venueName;
 	@Column(name = "ADDRESS_LINE_1")
@@ -35,6 +37,16 @@ public class Property implements Serializable{
 	@JoinColumn(name="ID_PROVIDER")
 	Provider provider;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
+	List<PropertyImageFile> photos = new ArrayList<PropertyImageFile>();
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "property")
+	List<PropertyDocumentFile> documents = new ArrayList<PropertyDocumentFile>();
+
+
+	public Property(){
+
+	}
 	public Property(com.booking.modal.Property property) {
 		setVenueName(property.getVenueName());
 		setAddressLine1(property.getAddressLine1());
@@ -46,11 +58,11 @@ public class Property implements Serializable{
 		setCountry(property.getCountry());
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -124,5 +136,21 @@ public class Property implements Serializable{
 
 	public void setProvider(Provider provider) {
 		this.provider = provider;
+	}
+
+	public List<PropertyImageFile> getPhotos() {
+		return photos;
+	}
+
+	public void setPhotos(List<PropertyImageFile> photos) {
+		this.photos = photos;
+	}
+
+	public List<PropertyDocumentFile> getDocuments() {
+		return documents;
+	}
+
+	public void setDocuments(List<PropertyDocumentFile> documents) {
+		this.documents = documents;
 	}
 }

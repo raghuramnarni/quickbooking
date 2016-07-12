@@ -7,7 +7,7 @@ import com.booking.modal.Property;
 /**
  * Created by raghuramn on 6/18/16.
  */
-public class ProviderDetailsForm {
+public class ProviderEnrollmentForm {
 	String firstName;
 	String middleName;
 	String lastName;

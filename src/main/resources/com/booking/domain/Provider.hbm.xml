@@ -31,12 +31,20 @@
         </property>
 
         <set name="properties" table="PROPERTY"
-             inverse="true" lazy="true" fetch="select">
+             inverse="true" lazy="true" fetch="select" cascade="all">
             <key>
                 <column name="ID" not-null="true" />
             </key>
             <one-to-many class="com.booking.modal.Property" />
         </set>
+        <bag name="photos" table="PROVIDER_PHOTO"
+             order-by="ID" cascade="all" lazy="true">
+            <key>
+                <column name="PROVIDER_ID" not-null="true" />
+            </key>
+            <one-to-many
+                    class="com.booking.domain.ProviderImageFile" />
+        </bag>
 
     </class>
 </hibernate-mapping>
