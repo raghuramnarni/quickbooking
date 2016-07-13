@@ -2,19 +2,22 @@ package com.booking.form;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by raghuramn on 7/8/16.
  */
 public class PropertyPhotoUploadForm {
 
-	MultipartFile file;
-	long propertyId;
+	MultipartFile[] file;
+	@NotNull(message = "Please enter propertyId")
+	Long propertyId;
 
-	public MultipartFile getFile() {
+	public MultipartFile[] getFile() {
 		return file;
 	}
 
-	public void setFile(MultipartFile file) {
+	public void setFile(MultipartFile[] file) {
 		this.file = file;
 	}
 

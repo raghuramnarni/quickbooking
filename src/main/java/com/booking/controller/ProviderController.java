@@ -2,6 +2,7 @@ package com.booking.controller;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,14 +11,16 @@ import com.booking.dao.ProviderDAO;
 import com.booking.domain.Provider;
 import com.booking.form.ProviderPhotoUploadForm;
 import com.booking.form.ProviderSearchForm;
+import com.booking.response.*;
+import com.booking.response.ResponseStatus;
+import com.booking.util.PhotoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import com.booking.form.ProviderEnrollmentForm;
 import com.booking.modal.ProviderResponse;
-import com.booking.response.APIResponse;
-import com.booking.response.Success;
 import com.booking.service.ProviderService;
 
 /**
@@ -41,7 +44,11 @@ public class ProviderController {
 	@RequestMapping(value = "/enroll", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody
 	APIResponse enroll(HttpServletRequest request,
-			HttpServletResponse response, @RequestBody ProviderEnrollmentForm form) {
+			HttpServletResponse response, @RequestBody @javax.validation.Valid ProviderEnrollmentForm form,
+			BindingResult result) {
+		if(result.hasErrors()){
+			return new Failure(ResponseStatus.Status.FAIL, result);
+		}
 
 		Map<String, Object> data = new HashMap<String, Object>();
 		Provider provider = providerService
@@ -56,7 +63,11 @@ public class ProviderController {
 	 */
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
 	public @ResponseBody
-	APIResponse uploadFileHandler(ProviderPhotoUploadForm form) {
+	APIResponse uploadFileHandler(@javax.validation.Valid ProviderPhotoUploadForm form,
+																BindingResult result) {
+		if(result.hasErrors()){
+			return new Failure(ResponseStatus.Status.FAIL, result);
+		}
 		Map<String, Object> data = new HashMap<String, Object>();
 		providerService.createProviderPhoto(form.getFile(), form.getProviderId());
 		return new Success(data);

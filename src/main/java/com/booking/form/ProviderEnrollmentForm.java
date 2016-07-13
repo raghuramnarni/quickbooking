@@ -3,17 +3,31 @@ package com.booking.form;
 import java.util.ArrayList;
 import java.util.List;
 import com.booking.modal.Property;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 /**
  * Created by raghuramn on 6/18/16.
  */
 public class ProviderEnrollmentForm {
+
+	@NotEmpty(message = "Please enter firstName")
 	String firstName;
 	String middleName;
+	@NotEmpty(message = "Please enter lastName")
 	String lastName;
+	@NotEmpty(message = "Please enter password")
 	String password;
+	@NotEmpty(message = "Please enter email")
+	@Email(message = "Please enter a valid email")
 	String email;
+	@NotEmpty(message = "Please enter primaryPhone")
+	@Pattern(regexp = "\\d{10}", message = "Please enter a valid phone number")
 	String primaryPhone;
+	@Pattern(regexp = "\\d{10}", message = "Please enter a valid phone number")
 	String alternatePhone;
 	List<Property> properties = new ArrayList<Property>();
 

@@ -1,5 +1,6 @@
 package com.booking.form;
 
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -8,7 +9,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProviderPhotoUploadForm {
 
 	MultipartFile file;
-	long providerId;
+
+	@NotEmpty(message = "Please enter propertyId")
+	Long providerId;
 
 	public MultipartFile getFile() {
 		return file;

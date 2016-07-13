@@ -57,6 +57,78 @@ public class Failure extends APIResponse {
    */
   public Failure(ResponseStatus.Status status, org.springframework.validation.Errors errors) {
     super(status);
+    getErrorsFromFieldErrors(errors);
+    getGlobalErrors(errors);
   }
+
+  /**
+   * @param errors
+   */
+  private void getErrorsFromFieldErrors(org.springframework.validation.Errors errors) {
+    if(errors != null){
+      Map<String, List<String>> map = new HashMap<String, List<String>>();
+      // multiple such fields in a bean, hence ArrayList
+      this.errors = new ArrayList<Map<String, List<String>>>();
+      for(Iterator<FieldError> iterator = errors.getFieldErrors().iterator(); iterator
+              .hasNext(); ){
+        FieldError error = (FieldError) iterator.next();
+        List<String> list = map.get(error.getField());
+        if(list == null){
+          list = new ArrayList<String>();
+        }
+
+        String message = buildMessageFromError(error);
+        if(message!=null){
+          list.add(message);
+        }
+        map.put(error.getField(), list);
+      }
+      this.errors.add(map);
+    }
+  }
+
+  private String buildMessageFromError(ObjectError error){
+    if(error!=null){
+      // build error message from error code and message arguments
+      if(error.getCode() != null){
+        String errorMessage = error.getDefaultMessage();
+        if(errorMessage != null && !errorMessage.equals(error.getCode())){
+          return errorMessage;
+        }
+      }
+      // error message is not built, use default message or use error code
+      if(error.getDefaultMessage() != null){
+        return error.getDefaultMessage();
+      } else{
+        return error.getCode();
+      }
+    }
+    return null;
+
+  }
+
+  private void getGlobalErrors(org.springframework.validation.Errors errors) {
+    if(errors != null){
+      Map<String, List<String>> map = new HashMap<String, List<String>>();
+      // multiple such fields in a bean, hence ArrayList
+      if(this.errors == null){
+        this.errors = new ArrayList<Map<String, List<String>>>();
+      }
+      List<String> list = new ArrayList<String>();
+      for(Iterator<ObjectError> iterator = errors.getGlobalErrors().iterator(); iterator.hasNext(); ){
+        ObjectError error = iterator.next();
+        boolean messageSet = false;
+        String message = buildMessageFromError(error);
+        // build error message from error code and message arguments
+        if(message != null){
+          list.add(message);
+        }
+      }
+      // global errors are on request/object level. GLOBAL_ERROR key is just our name convention
+      map.put(GLOBAL_ERROR, list);
+      this.errors.add(map);
+    }
+  }
+
 
 }
