@@ -2,7 +2,6 @@ package com.booking.controller;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.logging.Level;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,7 +12,6 @@ import com.booking.form.ProviderPhotoUploadForm;
 import com.booking.form.ProviderSearchForm;
 import com.booking.response.*;
 import com.booking.response.ResponseStatus;
-import com.booking.util.PhotoUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -69,7 +67,7 @@ public class ProviderController {
 			return new Failure(ResponseStatus.Status.FAIL, result);
 		}
 		Map<String, Object> data = new HashMap<String, Object>();
-		providerService.createProviderPhoto(form.getFile(), form.getProviderId());
+		providerService.createProviderPhoto(form.getProviderPic(), form.getProviderId());
 		return new Success(data);
 	}
 

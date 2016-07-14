@@ -9,16 +9,16 @@ import javax.validation.constraints.NotNull;
  */
 public class PropertyPhotoUploadForm {
 
-	MultipartFile[] file;
+	MultipartFile[] propertyPics;
 	@NotNull(message = "Please enter propertyId")
 	Long propertyId;
 
-	public MultipartFile[] getFile() {
-		return file;
+	public MultipartFile[] getPropertyPics() {
+		return propertyPics;
 	}
 
-	public void setFile(MultipartFile[] file) {
-		this.file = file;
+	public void setPropertyPics(MultipartFile[] propertyPics) {
+		this.propertyPics = propertyPics;
 	}
 
 	public long getPropertyId() {

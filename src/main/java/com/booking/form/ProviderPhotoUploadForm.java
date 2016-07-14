@@ -8,17 +8,17 @@ import org.springframework.web.multipart.MultipartFile;
  */
 public class ProviderPhotoUploadForm {
 
-	MultipartFile file;
+	MultipartFile providerPic;
 
 	@NotEmpty(message = "Please enter propertyId")
 	Long providerId;
 
-	public MultipartFile getFile() {
-		return file;
+	public MultipartFile getProviderPic() {
+		return providerPic;
 	}
 
-	public void setFile(MultipartFile file) {
-		this.file = file;
+	public void setProviderPic(MultipartFile providerPic) {
+		this.providerPic = providerPic;
 	}
 
 	public long getProviderId() {

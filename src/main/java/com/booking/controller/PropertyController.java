@@ -1,11 +1,7 @@
 package com.booking.controller;
 
-import com.booking.dao.ProviderDAO;
-import com.booking.domain.Provider;
 import com.booking.form.PropertyDocumentUploadForm;
 import com.booking.form.PropertyPhotoUploadForm;
-import com.booking.form.ProviderSearchForm;
-import com.booking.modal.ProviderResponse;
 import com.booking.response.APIResponse;
 import com.booking.response.Failure;
 import com.booking.response.ResponseStatus;
@@ -14,14 +10,11 @@ import com.booking.service.PropertyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +40,7 @@ public class PropertyController {
 		if(result.hasErrors()){
 			return new Failure(ResponseStatus.Status.FAIL, result);
 		}
-		for(MultipartFile file : form.getFile()){
+		for(MultipartFile file : form.getPropertyPics()){
 			propertyService.uploadPhotos(file, form.getPropertyId());
 		}
 		return new Success(data);
@@ -66,7 +59,9 @@ public class PropertyController {
 		}
 
 		Map<String, Object> data = new HashMap<String, Object>();
-		propertyService.uploadDocuments(form.getFile(), form.getPropertyId());
+		for(MultipartFile file : form.getFiles()){
+			propertyService.uploadDocuments(file, form.getPropertyId());
+		}
 		return new Success(data);
 	}
 
