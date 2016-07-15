@@ -15,6 +15,7 @@ import java.util.HashSet;
 import com.booking.dao.PropertyDAO;
 import com.booking.modal.Property;
 
+import com.booking.util.PhotoUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -47,21 +48,9 @@ public class ProviderServiceImpl implements ProviderService {
 	public ProviderImageFile createProviderPhoto(MultipartFile file, long providerId){
 		if (!file.isEmpty()) {
 			try {
-				byte[] bytes = file.getBytes();
-
-				// Creating the directory to store file
-				String rootPath = System.getProperty("catalina.home");
-				File dir = new File(rootPath + File.separator + "tmpFiles");
-				if (!dir.exists())
-					dir.mkdirs();
 
 				// Create the file on server
-				File serverFile = new File(dir.getAbsolutePath()
-								+ File.separator + file.getOriginalFilename());
-				BufferedOutputStream stream = new BufferedOutputStream(
-								new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
+				File serverFile = PhotoUtil.uploadPhoto(file, providerId);
 
 				ProviderDAO providerDAO = new ProviderDAO();
 				Provider provider = providerDAO.find(providerId);

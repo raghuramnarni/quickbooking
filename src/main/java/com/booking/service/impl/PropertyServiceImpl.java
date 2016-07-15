@@ -3,6 +3,7 @@ package com.booking.service.impl;
 import com.booking.dao.*;
 import com.booking.domain.*;
 import com.booking.service.PropertyService;
+import com.booking.util.PhotoUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -20,21 +21,8 @@ public class PropertyServiceImpl implements PropertyService{
 	public void uploadPhotos(MultipartFile file, Long propertyId){
 		if (!file.isEmpty()) {
 			try {
-				byte[] bytes = file.getBytes();
-
-				// Creating the directory to store file
-				String rootPath = System.getProperty("catalina.home");
-				File dir = new File(rootPath + File.separator + "tmpFiles");
-				if (!dir.exists())
-					dir.mkdirs();
-
 				// Create the file on server
-				File serverFile = new File(dir.getAbsolutePath()
-								+ File.separator + file.getOriginalFilename());
-				BufferedOutputStream stream = new BufferedOutputStream(
-								new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
+				File serverFile = PhotoUtil.uploadPhoto(file, propertyId);
 
 				PropertyDAO propertyDAO = new PropertyDAO();
 				Property property = propertyDAO.find(propertyId);
@@ -53,21 +41,8 @@ public class PropertyServiceImpl implements PropertyService{
 	public void uploadDocuments(MultipartFile file, Long propertyId){
 		if (!file.isEmpty()) {
 			try {
-				byte[] bytes = file.getBytes();
-
-				// Creating the directory to store file
-				String rootPath = System.getProperty("catalina.home");
-				File dir = new File(rootPath + File.separator + "tmpFiles");
-				if (!dir.exists())
-					dir.mkdirs();
-
 				// Create the file on server
-				File serverFile = new File(dir.getAbsolutePath()
-								+ File.separator + file.getOriginalFilename());
-				BufferedOutputStream stream = new BufferedOutputStream(
-								new FileOutputStream(serverFile));
-				stream.write(bytes);
-				stream.close();
+				File serverFile = PhotoUtil.uploadPhoto(file, propertyId);
 
 				PropertyDAO propertyDAO = new PropertyDAO();
 				Property property = propertyDAO.find(propertyId);
