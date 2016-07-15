@@ -21,7 +21,7 @@ public class PropertyPhotoUploadForm {
 		this.propertyPics = propertyPics;
 	}
 
-	public long getPropertyId() {
+	public Long getPropertyId() {
 		return propertyId;
 	}
 

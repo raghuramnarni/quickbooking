@@ -3,6 +3,8 @@ package com.booking.form;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by raghuramn on 7/8/16.
  */
@@ -10,7 +12,6 @@ public class ProviderPhotoUploadForm {
 
 	MultipartFile providerPic;
 
-	@NotEmpty(message = "Please enter propertyId")
 	Long providerId;
 
 	public MultipartFile getProviderPic() {
@@ -21,7 +22,7 @@ public class ProviderPhotoUploadForm {
 		this.providerPic = providerPic;
 	}
 
-	public long getProviderId() {
+	public Long getProviderId() {
 		return providerId;
 	}
 
