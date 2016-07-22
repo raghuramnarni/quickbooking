@@ -35,6 +35,10 @@ public class Provider implements Serializable{
 	String primaryPhone;
 	@Column(name = "ALTERNATE_PHONE")
 	String alternatePhone;
+	@Column(name = "ROLE")
+	String role;
+	@Column(name = "ENABLED")
+	boolean enabled;
 
 	@OneToMany(cascade=CascadeType.ALL, mappedBy = "provider")
 	Set<Property> properties = new HashSet<Property>();
@@ -54,6 +58,8 @@ public class Provider implements Serializable{
 		this.password = form.getPassword();
 		this.primaryPhone = form.getPrimaryPhone();
 		this.alternatePhone = form.getAlternatePhone();
+		this.role = form.getRole();
+		this.enabled = true;
 	}
 
 	public Long getId() {
@@ -134,5 +140,21 @@ public class Provider implements Serializable{
 
 	public void setPhotos(List<ProviderImageFile> photos) {
 		this.photos = photos;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 }

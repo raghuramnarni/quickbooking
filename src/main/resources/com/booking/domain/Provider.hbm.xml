@@ -45,6 +45,8 @@
             <one-to-many
                     class="com.booking.domain.ProviderImageFile" />
         </bag>
+        <property name="role" column="ROLE" type="string"/>
+        <property name="enabled" column="ENABLED" type="boolean"/>
 
     </class>
 </hibernate-mapping>

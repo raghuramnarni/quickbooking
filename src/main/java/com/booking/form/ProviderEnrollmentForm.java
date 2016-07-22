@@ -29,6 +29,7 @@ public class ProviderEnrollmentForm {
 	String primaryPhone;
 	@Pattern(regexp = "\\d{10}", message = "Please enter a valid phone number")
 	String alternatePhone;
+	String role="ROLE_USER";
 	List<Property> properties = new ArrayList<Property>();
 
 	public String getFirstName() {
@@ -93,5 +94,13 @@ public class ProviderEnrollmentForm {
 
 	public void setProperties(List<Property> properties) {
 		this.properties = properties;
+	}
+
+	public String getRole() {
+		return role;
+	}
+
+	public void setRole(String role) {
+		this.role = role;
 	}
 }
