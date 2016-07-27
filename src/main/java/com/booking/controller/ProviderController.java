@@ -48,6 +48,11 @@ public class ProviderController {
 			return new Failure(ResponseStatus.Status.FAIL, result);
 		}
 
+		ProviderDAO providerDAO = new ProviderDAO();
+		if(providerDAO.findByEmail(form.getEmail()) != null){
+			return new Failure(ResponseStatus.Status.FAIL, "This email is already exists");
+		}
+
 		Map<String, Object> data = new HashMap<String, Object>();
 		Provider provider = providerService
 				.createProvider(form);
@@ -61,7 +66,8 @@ public class ProviderController {
 	 */
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
 	public @ResponseBody
-	APIResponse uploadFileHandler(@javax.validation.Valid ProviderPhotoUploadForm form,
+	APIResponse uploadFileHandler(HttpServletRequest request,
+																HttpServletResponse response, @javax.validation.Valid ProviderPhotoUploadForm form,
 																BindingResult result) {
 		if(result.hasErrors()){
 			return new Failure(ResponseStatus.Status.FAIL, result);
@@ -71,14 +77,14 @@ public class ProviderController {
 		return new Success(data);
 	}
 
-	@RequestMapping(value = "/details", method = RequestMethod.GET, produces = "application/json")
+	@RequestMapping(value = "/login", method = RequestMethod.POST, produces = "application/json")
 	public @ResponseBody
 	APIResponse providerDetails(HttpServletRequest request,
-										 HttpServletResponse response, @RequestBody ProviderSearchForm form) {
+										 HttpServletResponse response, @RequestBody @javax.validation.Valid ProviderSearchForm form) {
 
 		Map<String, Object> data = new HashMap<String, Object>();
 		ProviderDAO dao = new ProviderDAO();
-		Provider provider = dao.find(form.getProviderId());
+		Provider provider = dao.findByEmailAndPassword(form.getEmail(), form.getPassword());
 		ProviderResponse modelProvider = new ProviderResponse(provider);
 		data.put("provider", modelProvider);
 		return new Success(data);

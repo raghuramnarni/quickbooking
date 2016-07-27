@@ -32,6 +32,7 @@ import java.util.*;
 public class Failure extends APIResponse {
 
   private static final String GLOBAL_ERROR = "GLOBAL_ERROR";
+  private static final String GENERAL = "general";
 
   @JsonProperty
   private String errorAlert;
@@ -59,6 +60,15 @@ public class Failure extends APIResponse {
     super(status);
     getErrorsFromFieldErrors(errors);
     getGlobalErrors(errors);
+  }
+
+  /**
+   * @param status
+   * @param errorCode
+   */
+  public Failure(ResponseStatus.Status status, String errorCode) {
+    super(status);
+    getErrorFromErrorCode(errorCode);
   }
 
   /**
@@ -128,6 +138,18 @@ public class Failure extends APIResponse {
       map.put(GLOBAL_ERROR, list);
       this.errors.add(map);
     }
+  }
+
+  /**
+   * @param errorCode
+   */
+  private void getErrorFromErrorCode(String errorCode) {
+    this.errors = new ArrayList<Map<String, List<String>>>();
+    List<String> list = new ArrayList<String>();
+    Map<String, List<String>> map = new HashMap<String, List<String>>();
+    list.add(errorCode);
+    map.put(GENERAL, list);
+    this.errors.add(map);
   }
 
 

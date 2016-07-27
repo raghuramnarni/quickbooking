@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,7 +36,8 @@ public class PropertyController {
 	 */
 	@RequestMapping(value = "/uploadPhoto", method = RequestMethod.POST)
 	public @ResponseBody
-	APIResponse uploadPhoto(@javax.validation.Valid PropertyPhotoUploadForm form,
+	APIResponse uploadPhoto(HttpServletRequest request,
+													HttpServletResponse response, @javax.validation.Valid PropertyPhotoUploadForm form,
 													BindingResult result) {
 		Map<String, Object> data = new HashMap<String, Object>();
 		if(result.hasErrors()){
@@ -51,7 +54,8 @@ public class PropertyController {
 	 */
 	@RequestMapping(value = "/uploadDocument", method = RequestMethod.POST)
 	public @ResponseBody
-	APIResponse uploadDocuments(@javax.validation.Valid PropertyDocumentUploadForm form,
+	APIResponse uploadDocuments(HttpServletRequest request,
+															HttpServletResponse response, @javax.validation.Valid PropertyDocumentUploadForm form,
 															BindingResult result) {
 
 		if(result.hasErrors()){

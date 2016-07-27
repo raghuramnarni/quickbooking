@@ -9,6 +9,8 @@
 
     <http pattern="/provider/enroll" security="none">
     </http>
+    <http pattern="/provider/login" security="none">
+    </http>
     <http auto-config="true" pattern="/**">
         <intercept-url pattern="/**" access="ROLE_USER"/>
     </http>
